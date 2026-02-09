@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collage Management System</title>
+
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/view_students.css') }}">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="container">
+  <div class="logo"
+       style="background-image: url('{{ url_for('static', filename='images/logo.png') }}');">
+  </div>
+
+  <h1 class="h1">College Name</h1>
+
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/view_students">Students List</a>
+    <a href="/add_students">Add Students</a>
+    <a href="/attendance">Attendance Entry</a>
+  </nav>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="image"
+     style="background-image: url('{{ url_for('static', filename='images/image.jpg') }}');">
+  <h2 class="image_text">Student Details</h2>
+</div>
+
+<div class="container2">
+
+<!-- ================= SEARCH ================= -->
+<form method="get" action="/view_students">
+
+  <div class="search_bar">
+    <input class="search"
+           type="search"
+           name="search"
+           placeholder="Search by name, ID, or email"
+           value="{{ request.args.get('search','') }}">
+  </div>
+
+  <div class="search_bar">
+    <select name="course">
+      <option value="">All Courses</option>
+      {% for d in departments %}
+        <option value="{{ d[0] }}"
+          {% if request.args.get('course') == d[0] %}selected{% endif %}>
+          {{ d[1] }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="search_bar">
+    <select name="status">
+      <option value="">All Status</option>
+      <option value="active"
+        {% if request.args.get('status') == 'active' %}selected{% endif %}>
+        Active
+      </option>
+      <option value="inactive"
+        {% if request.args.get('status') == 'inactive' %}selected{% endif %}>
+        Inactive
+      </option>
+    </select>
+  </div>
+
+  <button class="search_button" type="submit">Search</button>
+</form>
+
+<!-- ================= BULK ACTIONS ================= -->
+<div class="bulk-actions">
+  <button type="button" class="btn enable" onclick="bulkUpdate(true)">
+    ✔ Enable Selected
+  </button>
+
+  <button type="button" class="btn disable" onclick="bulkUpdate(false)">
+    ✖ Disable Selected
+  </button>
+
+  <button type="button" class="btn delete" onclick="bulkDelete()">
+    🗑 Delete Selected
+  </button>
+
+  <span id="selected-count">0 selected</span>
+</div>
+
+<!-- ================= TABLE ================= -->
+<table id="student-table" class="display">
+
+<thead>
+<tr>
+  <th><input type="checkbox" id="select-all"></th>
+  <th>Student Name</th>
+  <th>Student ID</th>
+  <th>Course</th>
+  <th>Email</th>
+  <th>Active</th>
+  <th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+{% for s in students %}
+<tr>
+
+<td>
+  <input type="checkbox" class="row-check" value="{{ s[0] }}">
+</td>
+
+<td>{{ s[1] }}</td>
+<td>{{ s[2] }}</td>
+<td>{{ s[3] }}</td>
+<td>{{ s[4] }}</td>
+
+<td>
+  <label class="switch">
+    <input type="checkbox"
+           {% if s[5] %}checked{% endif %}
+           onchange="toggleStatus({{ s[0] }}, this)">
+    <span class="slider"></span>
+  </label>
+  <span>{{ "ON" if s[5] else "OFF" }}</span>
+</td>
+
+<td>
+{% if s[5] %}
+  <button
+    type="button"
+    class="edit-btn"
+    data-id="{{ s[0] }}"
+    data-name="{{ s[1] }}"
+    data-student-id="{{ s[2] }}"
+    data-course="{{ s[3] }}"
+    data-email="{{ s[4] }}"
+    data-phone="{{ s[6] | default('') }}"
+    data-address="{{ s[7] | default('') }}"
+    onclick="openEditModal(this)">
+    ✎ Edit
+  </button>
+{% else %}
+  <span style="color:#999;font-weight:600;">Disabled</span>
+{% endif %}
+</td>
+
+</tr>
+{% else %}
+<tr>
+  <td colspan="7" class="no-data">No results found</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+</div>
+
+<!-- ================= EDIT MODAL ================= -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+
+    <h3>Edit Student</h3>
+
+    <input type="hidden" id="edit-id">
+
+    <label>Full Name</label>
+    <input type="text" id="edit-name">
+
+    <label>Student ID</label>
+    <input type="text" id="edit-student-id" readonly>
+
+    <label>Email</label>
+    <input type="email" id="edit-email">
+
+    <label>Phone</label>
+    <input type="tel" id="edit-phone">
+
+    <label>Address</label>
+    <input type="text" id="edit-address">
+
+    <label>Course</label>
+    <select id="edit-course">
+      <option value="CSE">CSE</option>
+      <option value="AI_DS">AI & DS</option>
+      <option value="MECH">MECH</option>
+      <option value="ECE">ECE</option>
+    </select>
+
+    <div class="modal-actions">
+      <button class="btn-save" type="button" onclick="saveEdit()">Update</button>
+      <button class="btn-cancel" type="button" onclick="closeEditModal()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/view_students.js') }}" defer></script>
+</body>
+</html>

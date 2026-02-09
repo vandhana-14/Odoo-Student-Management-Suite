@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/attendance.css') }}">
+  <title>College Management System</title>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="container">
+  <div class="logo"
+       style="background-image: url('{{ url_for('static', filename='images/logo.png') }}');">
+  </div>
+
+  <h1 class="h1">College Name</h1>
+
+  <nav class="navbar">
+    <a href="/">Home</a>
+    <a href="/view_students">Students List</a>
+    <a href="/add_students">Add Students</a>
+    <a href="/attendance">Attendance Entry</a>
+  </nav>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="image">
+  <h2 class="image_text">Attendance Entry</h2>
+</div>
+
+<!-- ================= ATTENDANCE FORM ================= -->
+<form method="POST" action="/attendance">
+
+  <div class="form-row">
+    <label>Student ID</label><br>
+    <input
+      type="search"
+      name="student_id"
+      placeholder="Enter valid student ID"
+      required>
+  </div>
+
+  <div class="form-row">
+    <label>Date</label><br>
+    <input type="date" name="date" id="attendance-date">
+  </div>
+
+  <div class="check_in_time">
+    <label>Check-in Time</label><br>
+    <input type="time" name="check_in_time">
+    <small>Leave empty for auto check-in</small>
+  </div>
+
+  <div class="check_out_time">
+    <label>Check-out Time</label><br>
+    <input type="time" name="check_out_time">
+    <small>Leave empty for auto check-out</small>
+  </div>
+
+  <div class="form-row buttons"
+       style="background-color: rgba(0,0,0,0.051);
+              padding: 20px;
+              box-shadow: 0 0 10px rgba(0,0,0,0.1);
+              margin: -10px -20px -20px -20px;">
+
+    <button
+      class="submit"
+      type="submit"
+      style="width:300px;
+             margin-left:15%;
+             background-color:rgba(50,104,179);
+             color:white;
+             height:60px;font-size: 20px;">
+      Save Attendance
+    </button>
+
+    <button
+      type="reset"
+      style="background-color:rgb(255, 255, 255);
+             margin-left:5%;
+             height:60px; border:1px solid #000000; font-size: 20px;">
+      Reset
+    </button>
+  </div>
+
+</form>
+
+<!-- ================= SUCCESS MESSAGE ================= -->
+{% if success %}
+<div class="attendance-success">
+  <h3>✅ Attendance Saved Successfully</h3>
+  <p><strong>Student Name:</strong> {{ student_name }}</p>
+  <p><strong>Student ID:</strong> {{ student_id }}</p>
+</div>
+{% endif %}
+
+<!-- ================= FLASH ERROR ================= -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    {% if category == "error" %}
+      <div class="flash-error">{{ message }}</div>
+    {% endif %}
+  {% endfor %}
+{% endwith %}
+
+<script src="{{ url_for('static', filename='js/attendance.js') }}"></script>
+
+</body>
+</html>
