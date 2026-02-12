@@ -1,4 +1,3 @@
-import os
 from datetime import datetime, date, time
 from flask import (
     Flask,
@@ -13,6 +12,9 @@ from werkzeug.utils import secure_filename
 import psycopg2
 import os
 from dotenv import load_dotenv
+
+load_dotenv()   # 🔑 MUST be before os.getenv()
+
 
 # ================= APP =================
 
