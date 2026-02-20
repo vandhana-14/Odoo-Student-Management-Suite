@@ -1,0 +1,21 @@
+<odoo>
+<!-- ===================== -->
+<!-- MENU -->
+<!-- ===================== -->
+
+    <menuitem id="menu_student_root"
+              name="Student App"
+              sequence="1"/>
+
+    <menuitem id="menu_student"
+              name="View Students"
+              parent="menu_student_root"
+              action="action_student"
+              sequence="1"/>
+
+    <menuitem id="menu_student_entry"
+              name="Add Student"
+              parent="menu_student_root"
+              action="action_student_entry"
+              sequence="2"/>
+</odoo>

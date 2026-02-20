@@ -1,0 +1,14 @@
+.soe_kanban_image{
+    width: 150px;
+    height: 150px;
+    display: inline;
+
+}
+.soe_kanban_details,.oe_kanban_global_clic{
+    display: inline;
+}
+.soe_kanban_card{
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
