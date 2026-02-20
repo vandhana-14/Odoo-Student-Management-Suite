@@ -1,0 +1,32 @@
+<!-- ===================== -->
+<!-- MENU -->
+<!-- ===================== -->
+<odoo>
+             <!-- Parent root Menu -->
+
+    <menuitem id="menu_student_root"
+              name="Student Management"
+              sequence="1"/>
+
+             <!-- Student View Menu -->
+
+    <menuitem id="menu_student"
+              name="View Students"
+              parent="menu_student_root"
+              action="action_student"
+              sequence="1"/>
+
+             <!-- Add Student Menu -->
+
+    <menuitem id="menu_student_entry"
+              name="Add Student"
+              parent="menu_student_root"
+              action="action_student_entry"
+              sequence="2"/>
+
+              <!--icon-->
+              
+    <menuitem id="menu_student_root"
+          name="Student App"
+          web_icon="students_app,static/description/icon.png"/>
+</odoo>

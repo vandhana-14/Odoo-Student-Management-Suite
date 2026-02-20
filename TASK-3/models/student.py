@@ -5,20 +5,22 @@ class Student(models.Model):
     _description = 'Student'
 
     name = fields.Char(string="Name",required=True)
-    student_code = fields.Char(string="Student Code",required=True)
+    student_code = fields.Char(string="Student Code",required=True,unique=True)
     dob = fields.Date(string="Date of Birth",required=True)
     age = fields.Integer(string="Age",compute="_compute_age",store=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')],required=True)
     department_id = fields.Many2one('student.department',string="Department",required=True)
     skills = fields.Many2many('student.skills', string="Skills")
     joining_date = fields.Date(string="Joining Date",required=True)
-    mobile = fields.Char(string="Mobile",required=True)
-    email = fields.Char(string="Email")
-    address = fields.Text(string="Address")
-    location = fields.Char(string="Location")
+    mobile = fields.Char(string="Mobile",required=True,unique=True)
+    email = fields.Char(string="Email",required=True,unique=True)
+    address = fields.Text(string="Address",required=True)
+    location = fields.Char(string="Location",required=True)
     active = fields.Boolean(default=True,)
     image=fields.Binary(string="Image")
+    
 
+    # UPDATE BUTTON
 
     def action_update(self):
          return {
@@ -31,10 +33,24 @@ class Student(models.Model):
                 'next': self.env.ref('students_app.action_student').id,
             }
         }
+    
+    #Delete Button
+
     def action_delete(self):
         self.unlink()
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': 'Delete Success',
+                'message': 'Student Deleted Successfully!',
+                'type': 'success',
+                'next': self.env.ref('students_app.action_student').id,
+            }
+        }
 
     # SUBMIT BUTTON
+
     def action_submit(self):
         return {
             'type': 'ir.actions.client',
@@ -48,6 +64,7 @@ class Student(models.Model):
         }
 
     # RESET BUTTON
+
     def action_reset(self):
         for rec in self:
             rec.name = False
@@ -56,6 +73,8 @@ class Student(models.Model):
             rec.mobile = False
             rec.email = False
         return True
+
+    # AGE AUTO CALCULATION
 
     @api.depends('dob')
     def _compute_age(self):
@@ -67,3 +86,5 @@ class Student(models.Model):
                 )
             else:
                 rec.age = 0
+
+    
