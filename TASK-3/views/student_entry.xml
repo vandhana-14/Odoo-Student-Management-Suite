@@ -20,35 +20,64 @@
                             type="object"
                             string="Reset"
                             class="btn-secondary"/>
+
+                
                 </header>
 
                 <sheet>
-                    <group string="Basic Info">
-                        <group>
-                            <field name="name"/>
-                            <field name="student_code"/>
-                            <field name="dob"/>
-                            <field name="age" readonly="1"/>
-                            <field name="gender"/>
-                            <field name="department_id"
-                                    options="{'no_create': True, 'no_create_edit': True}"/>
-                            <field name="skills" widget="many2many_tags"/>
-                            <field name="joining_date"/>
-                            <field name="active" invisible="1"/>
-                            <field name="image"
-                                    widget="image"
-                                    options="{'preview_image': 'image', 'size': [150, 150]}"/>
-                        </group>
-                    </group>
 
-                    <group string="Contact Details">
-                        <group>
-                            <field name="mobile"/>
-                            <field name="email"/>
-                            <field name="location"/>
-                            <field name="address"/>
-                        </group>
-                    </group>
+                    <!-- OPTIONAL: NOTEBOOK (UI ONLY, NO LOGIC CHANGE) -->
+                    <notebook>
+
+                        <!-- ===================== -->
+                        <!-- PERSONAL INFO -->
+                        <!-- ===================== -->
+                        <page string="Personal Info">
+
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="dob"/>
+                                    <field name="age" readonly="1"/>
+                                    <field name="gender"/>
+                                </group>
+
+                                <group>
+                                    <field name="mobile"/>
+                                    <field name="email"/>
+                                    <field name="location"/>
+                                    <field name="address"/>
+                                </group>
+                            </group>
+
+                        </page>
+
+                        <!-- ===================== -->
+                        <!-- WORK INFO -->
+                        <!-- ===================== -->
+                        <page string="Work Info">
+
+                            <group>
+                                <group>
+                                    <field name="department_id"
+                                           options="{'no_create': True, 'no_create_edit': True}"/>
+                                    <field name="student_code" readonly="1"/>
+                                    <field name="skills" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    <field name="joining_date"/>
+                                </group>
+
+                                <group>
+                                    <field name="active" invisible="1"/>
+                                    <field name="image"
+                                           widget="image"
+                                           options="{'preview_image': 'image', 'size': [150, 150]}"/>
+                                </group>
+                            </group>
+
+                        </page>
+
+                    </notebook>
+
                 </sheet>
 
             </form>

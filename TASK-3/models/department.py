@@ -5,8 +5,10 @@ class StudentDepartment(models.Model):
     _description = "Department"
 
     name = fields.Char(required=True)
-    code = fields.Char()
+    code = fields.Char(required=True)
+    
 
     _sql_constraints = [
         ('unique_name', 'unique(name)', 'Department must be unique!')
     ]
+    
