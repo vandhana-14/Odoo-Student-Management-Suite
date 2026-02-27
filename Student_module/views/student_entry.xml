@@ -84,18 +84,6 @@
         </field>
     </record>
 
-    <!-- ===================== -->
-    <!-- ACTION (ADD STUDENT) -->
-    <!-- ===================== -->
-    <record id="action_student_entry" model="ir.actions.act_window">
-        <field name="name">Add Student</field>
-        <field name="res_model">student.student</field>
 
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="create_student_form"/>
-
-        <field name="target">current</field>
-        <field name="context">{'create': 1}</field>
-    </record>
 
 </odoo>

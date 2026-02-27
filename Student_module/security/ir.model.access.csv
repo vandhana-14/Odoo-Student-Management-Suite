@@ -4,3 +4,25 @@ access_student,student.student,model_student_student,,1,1,1,1
 access_student_skills,student.skills,model_student_skills,,1,1,1,1
 
 access_student_department,student.department,model_student_department,,1,1,1,1
+
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+# =========================
+# MAIN PROFILE MODEL
+# =========================
+access_student_student,student.student,model_student_student,,1,1,1,1
+
+# =========================
+# DEPARTMENT
+# =========================
+access_student_department,student.department,model_student_department,,1,1,1,1
+
+# =========================
+# SKILLS
+# =========================
+access_student_skills,student.skills,model_student_skills,,1,1,1,1
+
+# =========================
+# ATTENDANCE
+# =========================
+access_attendance_student,attendance.student,model_attendance_record,,1,1,1,1

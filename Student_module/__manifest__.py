@@ -13,6 +13,9 @@
         'views/student_views.xml',
         'views/student_entry.xml',
         'views/edit_form.xml',
+        'views/attendance_views.xml',
+        'views/attendance_form.xml',
+        'views/action.xml',
         'views/menu.xml',
     ],
 
