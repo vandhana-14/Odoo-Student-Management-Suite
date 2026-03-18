@@ -1,0 +1,43 @@
+.custom_card {
+    display: inline-flex;
+    align-items: center; /* fix alignment issue */
+}
+
+/* LEFT IMAGE */
+.card_left img {
+    border-radius: 1px;
+    display: block; /* prevent inline gap issue */
+}
+
+/* RIGHT SIDE */
+.card_right {
+    margin-left: 5px;
+    flex: 1;
+}
+
+/* NAME */
+.card_name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* CODE */
+.card_code {
+    color: #888;
+    margin-top: 3px;
+}
+
+/* EMAIL */
+.card_email {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 3px; /* fixed spacing */
+}
+
+/* TAG STYLE */
+.o_tag {
+    border-radius: 8px !important;
+    padding: 4px 8px;
+    display: inline-block; /* fix tag rendering issue */
+}

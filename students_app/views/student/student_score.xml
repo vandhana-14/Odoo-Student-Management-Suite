@@ -1,0 +1,67 @@
+<odoo>
+
+    <!-- Student Marks Menu -->
+    <record id="action_student_score" model="ir.actions.act_window">
+        <field name="name">Semester Marks</field>
+        <field name="res_model">student.score.record</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <menuitem id="menu_student_score"
+              name="Semester Marks"
+              parent="students_app.menu_student_root"
+              action="action_student_score"
+              sequence="20"/>
+
+
+    <!-- Search View -->
+    <record id="view_student_score_search" model="ir.ui.view">
+        <field name="name">student.score.search</field>
+        <field name="model">student.score.record</field>
+        <field name="arch" type="xml">
+
+            <search string="Search Marks">
+
+                <field name="semester"/>
+
+                <field name="category"/>
+
+                <filter string="Cycle Test 1"
+                        name="cycle1"
+                        domain="[('category','=','cycle1')]"/>
+
+                <filter string="Cycle Test 2"
+                        name="cycle2"
+                        domain="[('category','=','cycle2')]"/>
+
+                <filter string="Semester Exam"
+                        name="semester"
+                        domain="[('category','=','semester')]"/>
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <!-- Table View -->
+    <record id="view_student_score_list" model="ir.ui.view">
+        <field name="name">student.score.list</field>
+        <field name="model">student.score.record</field>
+        <field name="arch" type="xml">
+
+            <list string="Semester Marks">
+
+                <field name="subject_code"/>
+                <field name="subject_name"/>
+                <field name="exam_year"/>
+                <field name="exam_month"/>
+                <field name="grade"/>
+                <field name="credits"/>
+
+            </list>
+
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_all,student.student,model_student_student,,1,1,1,1
+access_department_all,student.department,model_student_department,,1,1,1,1
+access_skills_all,student.skills,model_student_skills,,1,1,1,1
+access_attendance_all,student.attendance,model_student_attendance,,1,1,1,1
+access_leave_all,student.leave,model_student_leave,,1,1,1,1
+access_mark_all,student.marks,model_student_marks,,1,1,1,1
+access_exam_all,student.exam,model_student_exam,,1,1,1,1
+access_subject_all,student.subject,model_student_subject,,1,1,1,1
+access_student_marks_line_all,student.marks.line,model_student_marks_line,,1,1,1,1
+
+student_admin_access,student.admin.access,model_student_student,students_app.group_student_admin,1,1,1,1
+student_staff_access,student.staff.access,model_student_student,students_app.group_student_staff,1,1,1,0
+student_user_access,student.user.access,model_student_student,students_app.group_student_user,1,0,0,0
+
+access_bulk_password_reset_all,bulk.password.reset,model_student_bulk_password_reset,,1,1,1,1
+access_student_score,student.score.record,model_student_score_record,,1,0,0,0

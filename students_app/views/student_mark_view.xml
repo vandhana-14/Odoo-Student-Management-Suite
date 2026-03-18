@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- =========================
+         MARKS LIST VIEW
+    ========================== -->
+    <record id="view_student_marks_list" model="ir.ui.view">
+        <field name="name">student.marks.list</field>
+        <field name="model">student.marks</field>
+        <field name="arch" type="xml">
+
+            <list>
+
+                <field name="student_id"/>
+                <field name="student_name"/>
+                <field name="department_id"/>
+                <field name="semester"/>
+                <field name="exam_category"/>
+                <field name="total_subjects"/>
+                <field name="total_marks"/>
+                <field name="total_grade"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- =========================
+         MARKS FORM VIEW
+    ========================== -->
+    <record id="view_student_marks_form" model="ir.ui.view">
+        <field name="name">student.marks.form</field>
+        <field name="model">student.marks</field>
+        <field name="arch" type="xml">
+
+            <form string="Student Marks">
+
+                <sheet>
+
+                    <!-- =====================
+                         STUDENT INFORMATION
+                    ===================== -->
+                    <group string="Student Information">
+
+                        <field name="student_id"/>
+                        <field name="student_name" readonly="1"/>
+                        <field name="department_id" readonly="1"/>
+                        <field name="semester"/>
+                        <field name="exam_category"/>
+
+                    </group>
+
+
+                    <!-- =====================
+                         SUBJECT MARKS TABLE
+                    ===================== -->
+                    <group string="Subject Marks">
+
+                        <field name="mark_line_ids" nolabel="1">
+                            <list editable="bottom">
+
+                                <field name="subject_id"/>
+                                <field name="max_marks"/>
+                                <field name="obtained_marks"/>
+                                <field name="grade" readonly="1"/>
+
+                                <field name="result"
+                                       widget="badge"
+                                       decoration-success="result == 'pass'"
+                                       decoration-danger="result == 'fail'"/>
+
+                            </list>
+                        </field>
+
+                    </group>
+
+
+                    <!-- =====================
+                         RESULT SUMMARY
+                    ===================== -->
+                    <group string="Result Summary">
+
+                        <field name="total_subjects" readonly="1"/>
+                        <field name="total_marks" readonly="1"/>
+                        <field name="total_grade" readonly="1"/>
+
+                    </group>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- =====================
+         GRAPH VIEW
+    ===================== -->
+    <record id="view_student_marks_graph" model="ir.ui.view">
+        <field name="name">student.marks.graph</field>
+        <field name="model">student.marks</field>
+        <field name="arch" type="xml">
+
+            <graph string="Marks Analysis" type="bar">
+
+                <field name="student_id"/>
+                <field name="total_marks" type="measure"/>
+
+            </graph>
+
+        </field>
+    </record>
+
+
+    <!-- =====================
+         PIVOT VIEW
+    ===================== -->
+    <record id="view_student_marks_pivot" model="ir.ui.view">
+        <field name="name">student.marks.pivot</field>
+        <field name="model">student.marks</field>
+        <field name="arch" type="xml">
+
+            <pivot string="Marks Analysis">
+
+                <field name="student_id" type="row"/>
+                <field name="semester" type="col"/>
+                <field name="total_marks" type="measure"/>
+
+            </pivot>
+
+        </field>
+    </record>
+
+
+    <!-- =====================
+         SEARCH VIEW
+    ===================== -->
+    <record id="marks_search" model="ir.ui.view">
+        <field name="name">student.marks.search</field>
+        <field name="model">student.marks</field>
+        <field name="arch" type="xml">
+
+            <search string="Search Marks">
+
+                <field name="student_id"/>
+                <field name="department_id"/>
+                <field name="semester"/>
+
+                <filter name="group_by_student"
+                        string="Group by Student"
+                        context="{'group_by': 'student_id'}"/>
+
+                <filter name="group_by_department"
+                        string="Group by Department"
+                        context="{'group_by': 'department_id'}"/>
+
+            </search>
+
+        </field>
+    </record>
+
+</odoo>
