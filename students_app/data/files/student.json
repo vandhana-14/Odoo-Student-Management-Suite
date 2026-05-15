@@ -1,0 +1,250 @@
+{
+  "version": "18.5.10",
+  "sheets": [
+    {
+      "id": "sheet1",
+      "name": "Student",
+      "colNumber": 9,
+      "rowNumber": 53,
+      "rows": {
+        "1": { "size": 40 },
+        "10": { "size": 41 },
+        "29": { "size": 44 },
+        "30": { "size": 35 },
+        "31": { "size": 34 },
+        "32": { "size": 35 },
+        "33": { "size": 32 },
+        "34": { "size": 35 },
+        "35": { "size": 32 },
+        "36": { "size": 36 },
+        "37": { "size": 35 },
+        "38": { "size": 31 },
+        "39": { "size": 36 }
+      },
+      "cols": {
+        "0": { "size": 349 },
+        "1": { "size": 95 },
+        "2": { "size": 80 },
+        "3": { "size": 50 },
+        "4": { "size": 217 }
+      },
+      "merges": [],
+      "cells": {
+        "A2": "=_t(\"Student Dashboard\")",
+        "A11": "[Student Mark Analysis](odoo://view/{\"viewType\":\"graph\",\"action\":{\"domain\":[],\"context\":{\"group_by\":[\"create_date:month\"],\"graph_measure\":\"total_marks\",\"graph_mode\":\"line\",\"graph_groupbys\":[\"create_date:month\"]},\"modelName\":\"student.marks\",\"views\":[[false,\"graph\"],[false,\"pivot\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Student Mark Analysis\"})"
+      },
+      "styles": {
+        "A2": 1,
+        "A11": 1,
+        "A29": 1,
+        "E29": 1,
+        "A12": 2,
+        "A40:D40": 3,
+        "E30:F30": 4,
+        "H30:I30": 4,
+        "E40:I40": 5,
+        "G30": 6
+      },
+      "formats": {},
+      "borders": {
+        "B11:E11": 1,
+        "A11": 1,
+        "F11:G11": 1,
+        "A29": 1,
+        "B29:D29": 1,
+        "E30:G30": 2,
+        "H30": 2,
+        "I30": 2,
+        "H11": 1,
+        "I11": 1
+      },
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [
+        {
+          "id": "67858d0e-b5ba-4a3c-bf9e-c0fceaeedf65",
+          "width": 320,
+          "height": 101,
+          "tag": "chart",
+          "data": {
+            "type": "scorecard",
+            "title": { "text": "Total Student", "bold": true, "color": "#434343" },
+            "background": "#ECFDF5",
+            "keyValue": "Data!B2",
+            "humanize": false,
+            "chartId": "67858d0e-b5ba-4a3c-bf9e-c0fceaeedf65"
+          },
+          "offset": { "x": 0, "y": 11 },
+          "col": 0,
+          "row": 0
+        },
+        {
+          "id": "bc7bc6b7-01fd-4c5b-9641-33ccbc896130",
+          "width": 1095,
+          "height": 344,
+          "tag": "chart",
+          "data": {
+            "title": { "text": "", "color": "#EFF6FF" },
+            "background": "#FFFFFF",
+            "legendPosition": "none",
+            "metaData": {
+              "groupBy": ["create_date:month"],
+              "measure": "total_marks",
+              "order": null,
+              "resModel": "student.marks",
+              "mode": "line",
+              "cumulatedStart": false
+            },
+            "searchParams": {
+              "comparison": null,
+              "context": { "group_by": [] },
+              "domain": [],
+              "groupBy": ["create_date:month"],
+              "orderBy": []
+            },
+            "type": "odoo_line",
+            "dataSets": [
+              {}
+            ],
+            "verticalAxisPosition": "left",
+            "stacked": false,
+            "cumulatedStart": false,
+            "axesDesign": { "y": { "title": { "text": "Marks" } } },
+            "fillArea": true,
+            "chartId": "bc7bc6b7-01fd-4c5b-9641-33ccbc896130",
+            "fieldMatching": {
+              "13d30fda-b14d-4a56-b186-25468af3b1e9": {
+                "chain": "create_date",
+                "type": "datetime",
+                "offset": 0
+              }
+            }
+          },
+          "offset": { "x": 0, "y": 13 },
+          "col": 0,
+          "row": 12
+        }
+      ],
+      "tables": [],
+      "areGridLinesVisible": true,
+      "isVisible": true,
+      "headerGroups": { "ROW": [], "COL": [] },
+      "comments": {}
+    },
+    {
+      "id": "eae01f9c-c461-4489-ade4-957ef2459d40",
+      "name": "Data",
+      "colNumber": 26,
+      "rowNumber": 103,
+      "rows": {},
+      "cols": {
+        "0": { "size": 160 },
+        "1": { "size": 89 },
+        "2": { "size": 89 },
+        "3": { "size": 89 },
+        "4": { "size": 89 }
+      },
+      "merges": [],
+      "cells": {
+        "A1": "=_t(\"KPI\")",
+        "A2": "=_t(\"Total Student\")",
+        "B2": "=PIVOT.VALUE(1,\"__count\")"
+      },
+      "styles": {},
+      "formats": {},
+      "borders": {},
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [],
+      "areGridLinesVisible": true,
+      "isVisible": true,
+      "headerGroups": { "ROW": [], "COL": [] },
+      "comments": {}
+    }
+  ],
+  "styles": {
+    "1": { "textColor": "#01666b", "bold": true, "fontSize": 16 },
+    "2": { "fontSize": 14, "textColor": "#43C5B1" },
+    "3": { "textColor": "#43C5B1" },
+    "4": { "bold": true, "fontSize": 11, "textColor": "#434343", "verticalAlign": "middle" },
+    "5": { "textColor": "#000000" },
+    "6": { "align": "center", "fontSize": 11, "textColor": "#434343", "verticalAlign": "middle", "bold": true }
+  },
+  "borders": {
+    "1": { "bottom": { "color": "#CCCCCC", "style": "thin" } },
+    "2": { "top": { "color": "#CCCCCC", "style": "thin" } }
+  },
+  "revisionId": "START_REVISION",
+  "uniqueFigureIds": true,
+  "settings": {
+    "locale": {
+      "name": "English (India)",
+      "code": "en_IN",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "dd/mm/yyyy",
+      "timeFormat": "hh:mm:ss",
+      "formulaArgSeparator": ",",
+      "weekStart": 7
+    }
+  },
+  "pivots": {
+    "1": {
+      "type": "ODOO",
+      "fieldMatching": {},
+      "context": {
+        "group_by": []
+      },
+      "domain": [],
+      "id": "1",
+      "measures": [
+        { "id": "__count", "fieldName": "__count" }
+      ],
+      "model": "student.student",
+      "name": "Students",
+      "sortedColumn": null,
+      "formulaId": "1",
+      "columns": [],
+      "rows": []
+    },
+    "2": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "13d30fda-b14d-4a56-b186-25468af3b1e9": {
+          "chain": "create_date",
+          "type": "datetime"
+        }
+      },
+      "context": {
+        "group_by": [],
+        "graph_measure": "total_marks",
+        "graph_mode": "bar"
+      },
+      "domain": [],
+      "id": "2",
+      "measures": [
+        { "id": "total_marks", "fieldName": "total_marks" }
+      ],
+      "model": "student.marks",
+      "name": "Student Marks",
+      "sortedColumn": null,
+      "formulaId": "2",
+      "columns": [],
+      "rows": []
+    }
+  },
+  "pivotNextId": 3,
+  "customTableStyles": {},
+  "globalFilters": [
+    {
+      "id": "13d30fda-b14d-4a56-b186-25468af3b1e9",
+      "type": "date",
+      "label": "Period",
+      "defaultValue": "last_30_days"
+    }
+  ],
+  "lists": {},
+  "listNextId": 1,
+  "chartOdooMenusReferences": {}
+}
