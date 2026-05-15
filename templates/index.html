@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance System</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; }
+        .box { width: 300px; margin: 80px auto; padding: 20px; background: #fff; }
+        input, select, button { width: 100%; margin: 8px 0; padding: 8px; }
+        .msg { text-align: center; margin-top: 10px; }
+        .a { text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h3>Attendance</h3>
+    <form method="post">
+        <input type="text" name="roll" placeholder="Roll Number" required>
+        <select name="mode">
+            <option value="checkin">Check In</option>
+            <option value="checkout">Check Out</option>
+        </select>
+        <select name="status">
+            <option value="P">Present</option>
+            <option value="A">Absent</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="msg">{{ message }}</div>
+    <div class="a"><a href="/students">Add Student</a></div>
+</div>
+</body>
+</html>
