@@ -28,7 +28,8 @@ class StudentSubject(models.Model):
         string="Departments"
     )
 
-    _unique_name_semester = models.Constraint(
-        'unique(name, semester)',
-        'Subject already exists in this semester!',
-    )
+    _sql_constraints = [
+        ('unique_name_semester',
+         'unique(name, semester)',
+         'Subject already exists in this semester!')
+    ]

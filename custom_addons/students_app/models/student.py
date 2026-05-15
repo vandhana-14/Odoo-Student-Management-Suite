@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.models import Constraint
 from datetime import datetime
 
 
@@ -30,10 +31,6 @@ class Student(models.Model):
     )
 
     skills = fields.Many2many('student.skills', string="Skills")
-    # Aliases expected by ask_ai (no logic change)
-    date_of_birth = fields.Date(related="dob", store=True, string="Date of Birth (Alias)")
-    enrollment_date = fields.Date(related="joining_date", store=True, string="Joining Date (Alias)")
-    skills_ids = fields.Many2many(related="skills", string="Skills (Alias)", store=False)
 
     joining_date = fields.Date(string="Joining Date", required=True)
 
@@ -51,18 +48,20 @@ class Student(models.Model):
         string="Related User"
     )
 
-    _unique_student_code = models.Constraint(
-        'unique(student_code)',
-        'Student ID must be unique!',
-    )
-    _unique_mobile = models.Constraint(
-        'unique(mobile)',
-        'Mobile number must be unique!',
-    )
-    _unique_email = models.Constraint(
-        'unique(email)',
-        'Email must be unique!',
-    )
+    _constraints = [
+        Constraint(
+            'unique(student_code)',
+            'Student ID must be unique!'
+        ),
+        Constraint(
+            'unique(mobile)',
+            'Mobile number must be unique!'
+        ),
+        Constraint(
+            'unique(email)',
+            'Email must be unique!'
+        ),
+    ]
 
     # UPDATE BUTTON
     def action_update(self):
@@ -169,20 +168,10 @@ class Student(models.Model):
                     else:
                         group = self.env.ref('students_app.group_student_user')
 
-                    # Ensure partner required fields default during user creation
-                    # Create partner explicitly to satisfy NOT NULL fields (e.g., autopost_bills)
-                    partner = self.env['res.partner'].sudo().create({
-                        'name': rec.name,
-                        'email': rec.email,
-                        'type': 'contact',
-                        'autopost_bills': False,
-                    })
-
                     user = self.env['res.users'].sudo().create({
                         'name': rec.name,
                         'login': rec.email,
                         'email': rec.email,
-                        'partner_id': partner.id,
                         'group_ids': [(6, 0, [group.id])],
                         'company_id': self.env.company.id
                     })

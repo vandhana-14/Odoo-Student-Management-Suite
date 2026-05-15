@@ -7,10 +7,11 @@ class StudentLeave(models.Model):
     _name = "student.leave"
     _description = "Leave"
 
-    _unique_student_date = models.Constraint(
-        'unique(student_id, date_from)',
-        'Leave already created today!',
-    )
+    _sql_constraints = [
+        ('unique_student_date',
+         'unique(student_id, date_from)',
+         'Leave already created today!')
+    ]
 
     student_id = fields.Many2one(
         'student.student',

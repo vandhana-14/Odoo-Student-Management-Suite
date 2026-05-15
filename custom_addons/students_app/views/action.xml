@@ -111,5 +111,15 @@
             <field name="target">new</field>
         </record>
 
+        <!-- Action to open Student Marks -->
+        <record id="action_student_score" model="ir.actions.act_window">
+            <field name="name">Semester Marks</field>
+            <field name="res_model">student.score.record</field>
+            <field name="view_mode">list</field>
+            <field name="view_id" ref="view_student_score_list"/>
+            <field name="search_view_id" ref="view_student_score_search"/>
+            <field name="target">current</field>
+        </record>
+
     </data>
 </odoo>

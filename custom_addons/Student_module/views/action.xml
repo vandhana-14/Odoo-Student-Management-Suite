@@ -1,0 +1,63 @@
+<odoo>
+    <data>
+
+        <!-- ===================== -->
+        <!-- ACTION (VIEW STUDENTS) -->
+        <!-- ===================== -->
+        <record id="action_student" model="ir.actions.act_window">
+            <field name="name">View Students</field>
+            <field name="res_model">student.student</field>
+
+            <!-- Odoo uses 'tree' not 'list' -->
+            <field name="view_mode">tree,form,kanban,pivot,graph</field>
+
+            <field name="search_view_id" ref="view_student_search"/>
+            <field name="view_id" ref="view_student_list"/>
+
+            <!-- Disable create, allow edit -->
+            <field name="context">{'create': 0, 'edit': 1}</field>
+        </record>
+
+
+        <!-- ===================== -->
+        <!-- ACTION (ADD STUDENT) -->
+        <!-- ===================== -->
+        <record id="action_student_entry" model="ir.actions.act_window">
+            <field name="name">Add Student</field>
+            <field name="res_model">student.student</field>
+
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_student_form"/>
+
+            <field name="target">current</field>
+            <field name="context">{'create': 1}</field>
+        </record>
+
+
+        <!-- ===================== -->
+        <!-- ATTENDANCE ACTION -->
+        <!-- ===================== -->
+        <record id="action_student_attendance" model="ir.actions.act_window">
+            <field name="name">Student Attendance</field>
+            <field name="res_model">student.attendance</field>
+
+            <field name="view_mode">tree,graph</field>
+            <field name="search_view_id" ref="attendance_search"/>
+        </record>
+
+
+        <!-- ===================== -->
+        <!-- ATTENDANCE ENTRY ACTION -->
+        <!-- ===================== -->
+        <record id="action_student_attendance_entry" model="ir.actions.act_window">
+            <field name="name">Mark Attendance</field>
+            <field name="res_model">student.attendance</field>
+
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_attendance_form"/>
+
+            <field name="target">current</field>
+        </record>
+
+    </data>
+</odoo>

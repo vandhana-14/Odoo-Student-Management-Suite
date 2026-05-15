@@ -4,7 +4,7 @@
     <record id="action_student_score" model="ir.actions.act_window">
         <field name="name">Semester Marks</field>
         <field name="res_model">student.score.record</field>
-        <field name="view_mode">form,list</field>
+        <field name="view_mode">list</field>
     </record>
 
     <menuitem id="menu_student_score"
@@ -25,7 +25,6 @@
                 <field name="semester"/>
 
                 <field name="category"/>
-                <field name="student_id"/>
 
                 <filter string="Cycle Test 1"
                         name="cycle1"
@@ -44,47 +43,6 @@
         </field>
     </record>
 
-    <!-- Form View -->
-    <record id="view_student_score_form" model="ir.ui.view">
-        <field name="name">student.score.form</field>
-        <field name="model">student.score.record</field>
-        <field name="arch" type="xml">
-
-            <form string="Semester Marks">
-                <sheet>
-                    <group string="Student &amp; Exam Filters" col="2">
-                        <field name="student_id"/>
-                        <field name="student_name" readonly="1"/>
-                        <field name="department_id" readonly="1"/>
-                        <field name="category"/>
-                        <field name="semester"/>
-                    </group>
-
-                    <group>
-                        <button name="action_fetch_results"
-                                string="Fetch Results"
-                                type="object"
-                                class="btn-primary"/>
-                    </group>
-
-                    <group string="Exam Results">
-                        <field name="line_ids" nolabel="1" readonly="1">
-                            <list create="false" delete="false">
-                                <field name="course_id"/>
-                                <field name="course_name"/>
-                                <field name="exam_date"/>
-                                <field name="total_mark"/>
-                                <field name="obtained_mark"/>
-                                <field name="grade"/>
-                            </list>
-                        </field>
-                    </group>
-                </sheet>
-            </form>
-
-        </field>
-    </record>
-
 
     <!-- Table View -->
     <record id="view_student_score_list" model="ir.ui.view">
@@ -94,30 +52,16 @@
 
             <list string="Semester Marks">
 
-                <field name="student_id"/>
-                <field name="student_name"/>
-                <field name="department_id"/>
-                <field name="category"/>
-                <field name="semester"/>
+                <field name="subject_code"/>
+                <field name="subject_name"/>
+                <field name="exam_year"/>
+                <field name="exam_month"/>
+                <field name="grade"/>
+                <field name="credits"/>
 
             </list>
 
         </field>
-    </record>
-
-    <!-- Action View Order -->
-    <record id="action_student_score_form_view" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_student_score_form"/>
-        <field name="act_window_id" ref="action_student_score"/>
-    </record>
-
-    <record id="action_student_score_list_view" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
-        <field name="view_mode">list</field>
-        <field name="view_id" ref="view_student_score_list"/>
-        <field name="act_window_id" ref="action_student_score"/>
     </record>
 
 </odoo>

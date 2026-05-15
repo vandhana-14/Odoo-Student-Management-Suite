@@ -9,4 +9,3 @@ from . import student_mark
 from . import student_marks_line
 from . import bulk_password_reset
 from . import student_score_record
-from . import res_partner

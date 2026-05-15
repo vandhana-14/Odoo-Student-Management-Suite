@@ -16,10 +16,6 @@ class StudentExam(models.Model):
         required=True
     )
 
-    semester = fields.Integer(
-        string="Semester"
-    )
-
     # Exam Category
     category = fields.Selection(
         [

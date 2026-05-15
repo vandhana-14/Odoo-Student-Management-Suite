@@ -8,10 +8,11 @@ class StudentAttendance(models.Model):
     _name = "student.attendance"
     _description = "Student Attendance"
 
-    _unique_student_date = models.Constraint(
-        'unique(student_id, date)',
-        'Attendance already exists for this student today!',
-    )
+    _sql_constraints = [
+        ('unique_student_date',
+         'unique(student_id, date)',
+         'Attendance already exists for this student today!')
+    ]
 
     student_id = fields.Many2one(
         'student.student',

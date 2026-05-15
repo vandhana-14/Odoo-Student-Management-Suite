@@ -14,5 +14,4 @@ student_staff_access,student.staff.access,model_student_student,students_app.gro
 student_user_access,student.user.access,model_student_student,students_app.group_student_user,1,0,0,0
 
 access_bulk_password_reset_all,bulk.password.reset,model_student_bulk_password_reset,,1,1,1,1
-access_student_score,student.score.record,model_student_score_record,,1,1,1,1
-access_student_score_line,student.score.record.line,model_student_score_record_line,,1,1,1,1
+access_student_score,student.score.record,model_student_score_record,,1,0,0,0
